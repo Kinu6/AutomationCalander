@@ -18,6 +18,7 @@ public class ListenersImplementaion implements ITestListener{
 	public void onTestStart(ITestResult result) {
 		String methodName= result.getMethod().getMethodName();   // capture name of mthod--- get mothd and get name
 		//System.out.println(methodName+ "Test script execution started");
+		test=report.createTest(methodName); // Create a new ExtentTest instance for each test start
 		test.log(Status.INFO, methodName+ "Test script execution started ");
 	}
 	
@@ -30,12 +31,13 @@ public class ListenersImplementaion implements ITestListener{
 	public void onTestFailure(ITestResult result) {
 		String methodName= result.getMethod().getMethodName();   // capture name of mthod--- get mothd and get name
 		
-		System.out.println(methodName+ "Test script execution Failed");
-	    System.out.println(result.getThrowable());
-		test.log(Status.FAIL, methodName + result.getThrowable()+ "Test script execution FAIL");
+		//System.out.println(methodName+ "Test script execution Failed");
+	    //System.out.println(result.getThrowable());
+		test.log(Status.FAIL, methodName);
 		
 		String scrrenShotName= methodName+"-"+new JavaUtility().getSystemDateInFormat();
-	    WebDriverUtility wUtil= new WebDriverUtility();
+	    
+		WebDriverUtility wUtil= new WebDriverUtility();
 	    try {
 			String path= wUtil.takesScreenShot(BaseClass.sDriver, scrrenShotName);
 		    test.addScreenCaptureFromPath(path);
@@ -47,8 +49,8 @@ public class ListenersImplementaion implements ITestListener{
 	
 	public void onTestSkipped(ITestResult result) {
 		String methodName= result.getMethod().getMethodName();   // capture name of mthod--- get mothd and get name
-		System.out.println(methodName+ "Test script execution Skipped");
-		System.out.println(result.getThrowable());
+		//System.out.println(methodName+ "Test script execution Skipped");
+		//System.out.println(result.getThrowable());
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
@@ -67,7 +69,6 @@ public class ListenersImplementaion implements ITestListener{
 		
 		htmlReporter.config().setDocumentTitle("");
 		htmlReporter.config().setTheme(Theme.STANDARD);
-		htmlReporter.config().getReporter();
 		
 		report= new ExtentReports();
 		report.attachReporter(htmlReporter);
