@@ -21,6 +21,12 @@
 			<version>1.2.17</version>
 		</dependency>
 
+		<properties>
+			<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+			<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		</properties>
+
+
 		<!--This is for selenium java interaction-->
 		<!--
 		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
