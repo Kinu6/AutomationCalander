@@ -39,7 +39,7 @@ public class p1{
 			//create contact
 			driver.findElement(By.linkText("Contacts")).click();
 			
-			Thread.sleep(Duration.ofSeconds(10));
+			//Thread.sleep(Duration.ofSeconds(10));
 			
 			driver.findElement(By.xpath("//img[@src='themes/softed/images/btnL3Add.gif']")).click();
 			
