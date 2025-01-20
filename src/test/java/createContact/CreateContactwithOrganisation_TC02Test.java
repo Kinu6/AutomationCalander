@@ -22,7 +22,7 @@ public class CreateContactwithOrganisation_TC02Test extends BaseClass {
 	HomePage hp= new HomePage(driver);
 	hp.getContactstab().click();
 	
-	Thread.sleep(Duration.ofSeconds(10));
+	//Thread.sleep(Duration.ofSeconds(10));
 	
 	CreateContactPage ccp= new CreateContactPage(driver);
 	ccp.getCreateContactIcon().click();

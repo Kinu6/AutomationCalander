@@ -21,7 +21,7 @@ public class CreateOrganisationTC04Test extends BaseClass{
 		HomePage hp= new  HomePage(driver);
 		hp.getOrgTab().click();
 		
-		Thread.sleep(Duration.ofSeconds(5));
+		//Thread.sleep(Duration.ofSeconds(5));
 	
 		CreateOrganisationPage cop= new CreateOrganisationPage(driver);
 		cop.getCreateOrgIcon().click();

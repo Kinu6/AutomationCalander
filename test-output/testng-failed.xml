@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="createContact.CreateContact_T01Test">
+      <class name="practice12.UltraProMax">
         <methods>
           <include name="methodAfterSuite"/>
-          <include name="tc01Test"/>
           <include name="methodBeforeClass"/>
           <include name="methodBeforeMethod"/>
           <include name="methodAfterMethod"/>
           <include name="methodBeforeSuite"/>
+          <include name="getInto"/>
           <include name="methodAfterClass"/>
         </methods>
-      </class> <!-- createContact.CreateContact_T01Test -->
+      </class> <!-- practice12.UltraProMax -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

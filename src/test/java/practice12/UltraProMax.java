@@ -20,7 +20,7 @@ public void getInto() throws EncryptedDocumentException, IOException, Interrupte
 			
 		HomePage hp= new HomePage(driver);
 	    hp.getContactstab().click();
-	    Thread.sleep(Duration.ofSeconds(10));
+	   // Thread.sleep(Duration.ofSeconds(10));
 	    
 	    CreateContactPage cp= new CreateContactPage(driver);
 	    wUtil.waitForElementToBeClickable(driver, cp.getCreateContactIcon());

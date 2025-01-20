@@ -25,7 +25,7 @@ public class CreateContact_T01Test extends BaseClass {
 		HomePage hp= new HomePage(driver);
 	    hp.getContactstab().click();
 	    
-	    Thread.sleep(Duration.ofSeconds(10));
+	    //Thread.sleep(Duration.ofSeconds(10));
 	    
 	    CreateContactPage cp= new CreateContactPage(driver);
 	    wUtil.waitForElementToBeClickable(driver, cp.getCreateContactIcon());
