@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="practice12.UltraProMax">
+      <class name="createLeads.TC_01">
         <methods>
+          <include name="methodTC_01"/>
           <include name="methodAfterSuite"/>
           <include name="methodBeforeClass"/>
           <include name="methodBeforeMethod"/>
           <include name="methodAfterMethod"/>
           <include name="methodBeforeSuite"/>
-          <include name="getInto"/>
           <include name="methodAfterClass"/>
         </methods>
-      </class> <!-- practice12.UltraProMax -->
+      </class> <!-- createLeads.TC_01 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

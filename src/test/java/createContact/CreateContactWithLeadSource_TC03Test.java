@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.time.Duration;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import sriMataji.ObjectUtilities.ContactInformationPage;
 import sriMataji.ObjectUtilities.CreateContactPage;
-import sriMataji.ObjectUtilities.HomePage;
 import sriMataji.ObjectUtilities.NewContactPage;
 import sriMataji.genericUtilities.BaseClass;
 
@@ -19,10 +19,11 @@ public class CreateContactWithLeadSource_TC03Test extends BaseClass {
 		String lastName=eUtil.readDataFromExcelFile("contacts", 7, 2);
 		String leadName=eUtil.readDataFromExcelFile("contacts", 7, 3);
 	
-	HomePage hp= new HomePage(driver);
+	sriMataji.ObjectUtilities.HomePage hp= new sriMataji.ObjectUtilities.HomePage(driver);
 	hp.getContactstab().click();
 	
 	//Thread.sleep(Duration.ofSeconds(10));
+	wUtil.implicitWaits(driver);
 	
 	CreateContactPage ccp= new CreateContactPage(driver);
 	ccp.getCreateContactIcon().click();
@@ -31,13 +32,8 @@ public class CreateContactWithLeadSource_TC03Test extends BaseClass {
 	ncp.addLastnamewithLeadSource(lastName, leadName);
 	
 	ContactInformationPage cip=new ContactInformationPage(driver);
-	if(cip.getHeaderTxt().getText().contains(lastName)) {
-		System.out.println("Its "+ lastName);
-	}
+	Assert.assertEquals(cip.getHeaderTxt().getText().contains(lastName),true) ;
 	
-	if(cip.getHeaderTxt().getText().contains(leadName)) {
-		System.out.println("Its "+leadName);
-	}
-	
+
 	}
 }

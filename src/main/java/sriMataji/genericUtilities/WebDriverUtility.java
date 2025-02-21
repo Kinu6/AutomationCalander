@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Set;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -23,7 +24,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 
 public class WebDriverUtility {
-    /**
+   
+
+	/**
      * This method will maximize the window
      * @param driver
      */
@@ -44,7 +47,7 @@ public class WebDriverUtility {
 	 * @param element
 	 */
 	public void waitForElementToBeClickable(WebDriver driver, WebElement element) {
-		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	/**
@@ -53,16 +56,21 @@ public class WebDriverUtility {
 	 * @param element
 	 */
 	public void waitForElementToBeVisible(WebDriver driver, WebElement element) {
-		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
+	public void waitForInvisibility(WebDriver driver, WebElement element)
+	{
+		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		   wait.until(ExpectedConditions.visibilityOf(element));
+	}
 	/**
 	 * This Method will wait for alert to be shown 
 	 * @param driver
 	 */
 	public void implicitWaits(WebDriver driver) {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 	}
 	
 	/**
@@ -98,15 +106,23 @@ public class WebDriverUtility {
 	 * @param driver
 	 * @param element
 	 */
-	public void mouseHoverAction(WebDriver driver, WebElement element){
-		Actions act= new Actions(driver);
-		act.moveToElement(element).click().perform();;	
+	public void mouseHoverAction(WebDriver driver, WebElement element) {
+	    if (driver == null || element == null) {
+	        throw new IllegalArgumentException("WebDriver or WebElement is null");
+	    }
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+	    js.executeScript("arguments[0].scrollIntoView(true);", element);
+	    
+	    Actions act = new Actions(driver);
+	    act.moveToElement(element).release().perform();
 	}
+
 	/**
 	 * This Method will perform right click action in WebPage
 	 * @param driver 
 	 */
 	public void rightClickAction(WebDriver driver) {
+		
 		Actions act= new Actions(driver);
 		act.contextClick().perform();
 	}

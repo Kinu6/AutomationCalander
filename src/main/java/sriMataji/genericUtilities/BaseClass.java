@@ -1,11 +1,15 @@
 package sriMataji.genericUtilities;
 
 import java.io.IOException;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -22,16 +26,20 @@ import sriMataji.ObjectUtilities.HomePage;
 import sriMataji.ObjectUtilities.LoginPage;
 
 
-public class BaseClass {
 
+public class BaseClass {
+	
+	public WebDriver driver;
+	public static WebDriver sDriver;
+	
 	public ExcelFileUtility eUtil= new ExcelFileUtility();
 	public	PropertyFileUtility pUtil= new PropertyFileUtility();
 	public WebDriverUtility wUtil= new WebDriverUtility();
 	//public DatabaseUtility dUtil= new DatabaseUtility();
 	public JavaUtility jUtil= new JavaUtility();
-	public WebDriver driver= null;
-	public static WebDriver sDriver;
 	
+	
+
 	@BeforeSuite(groups={"smokeSuite","regressionSUite"})
 	public void methodBeforeSuite(){
 		//Connect to DB
@@ -59,8 +67,10 @@ public class BaseClass {
 		} else {
 			System.out.println("Invalid Browser");
 		}
+		
+		// Pass the WebDriver to the BaseClass constructor
 		sDriver= driver; //For Listeners
-		System.out.println(";"+ sDriver);
+		//System.out.println(";"+ sDriver);
 	    wUtil.maximizeWindow(driver);
 	    driver.get(URL);
 	}
@@ -69,17 +79,16 @@ public class BaseClass {
 	public void methodBeforeMethod() throws Throwable{
 		//Login to app
 	    String USERNAME= pUtil.readDataFromPropertyFile("username");
-	    String PASSWORD= pUtil.readDataFromPropertyFile("password");
-	    
+	    String PASSWORD= pUtil.readDataFromPropertyFile("password"); 
 	    LoginPage lp= new LoginPage(driver);
 	    lp.loginToApp(USERNAME, PASSWORD);
 	    System.out.println("Login to app");
 	}
+	
 	@AfterMethod(groups={"smokeSuite","regressionSUite"})
 	public void methodAfterMethod(){
 	    HomePage hp= new HomePage(driver);
 	    hp.logOut(driver);
-	   // wUtil.waitForElementToBeClickable(driver, hp.getSignOutIcon());
 	} 
 	//@AfterTest
 	@AfterClass(groups={"smokeSuite","regressionSUite"})

@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" parallel="tests" name="Test-Runner1(failed)">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <groups>
+      <run>
+        <include name="smokeSuite"/>
+      </run>
+    </groups>
     <classes>
-      <class name="createContact.CreateContactwithOrganisation_TC02Test">
+      <class name="createContact.CreateContact_T01Test">
         <methods>
-          <include name="TC02"/>
           <include name="methodAfterSuite"/>
+          <include name="tc01Test"/>
           <include name="methodBeforeClass"/>
           <include name="methodBeforeMethod"/>
           <include name="methodAfterMethod"/>
           <include name="methodBeforeSuite"/>
           <include name="methodAfterClass"/>
         </methods>
-      </class> <!-- createContact.CreateContactwithOrganisation_TC02Test -->
+      </class> <!-- createContact.CreateContact_T01Test -->
     </classes>
-  </test> <!-- Test-Runner1(failed) -->
+  </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

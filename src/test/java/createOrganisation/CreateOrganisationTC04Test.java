@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.apache.poi.EncryptedDocumentException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import sriMataji.ObjectUtilities.CreateOrganisationPage;
 import sriMataji.ObjectUtilities.HomePage;
 import sriMataji.ObjectUtilities.NewOrganizationPage;
@@ -13,7 +14,7 @@ import sriMataji.genericUtilities.BaseClass;
 
 public class CreateOrganisationTC04Test extends BaseClass{
 	
-	@Test
+	@Test()
 	public void tc04Test() throws InterruptedException, EncryptedDocumentException, IOException {
 		
 		String orgName= eUtil.readDataFromExcelFile("organizations", 01, 02)+jUtil.getRandomNumber();
@@ -21,7 +22,7 @@ public class CreateOrganisationTC04Test extends BaseClass{
 		HomePage hp= new  HomePage(driver);
 		hp.getOrgTab().click();
 		
-		//Thread.sleep(Duration.ofSeconds(5));
+		Thread.sleep(Duration.ofSeconds(5));
 	
 		CreateOrganisationPage cop= new CreateOrganisationPage(driver);
 		cop.getCreateOrgIcon().click();

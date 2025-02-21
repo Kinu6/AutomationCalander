@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CreateOrganisationPage {
      
-	@FindBy(xpath = "//img[@src='themes/softed/images/btnL3Add.gif']") private WebElement CreateOrgIcon;                            
+	@FindBy(css="img[title='Create Organization...']") private WebElement CreateOrgIcon;                            
 	public CreateOrganisationPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}

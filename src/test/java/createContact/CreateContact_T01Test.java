@@ -4,35 +4,39 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.time.Duration;
 import org.apache.poi.EncryptedDocumentException;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
+
 import sriMataji.ObjectUtilities.ContactInformationPage;
 import sriMataji.ObjectUtilities.CreateContactPage;
-import sriMataji.ObjectUtilities.HomePage;
 import sriMataji.ObjectUtilities.NewContactPage;
 import sriMataji.genericUtilities.BaseClass;
 import sriMataji.genericUtilities.ExcelFileUtility;
 
-@Listeners(sriMataji.genericUtilities.ListenersImplementaion.class)
+@Listeners()
 
 public class CreateContact_T01Test extends BaseClass {
 
-	@Test(groups = "smokeSuite")
+	@Test(priority = 1, invocationCount = 2, alwaysRun = true)
 	public void tc01Test() throws EncryptedDocumentException, IOException, InterruptedException{
+		
 	    ExcelFileUtility eUtil= new ExcelFileUtility();
 		String orgName= eUtil.readDataFromExcelFile("contacts", 01, 02);
 		
-		HomePage hp= new HomePage(driver);
+		sriMataji.ObjectUtilities.HomePage hp= new sriMataji.ObjectUtilities.HomePage(driver);
+		wUtil.waitForElementToBeVisible(driver, hp.getContactstab());
+		wUtil.waitForElementToBeClickable(driver, hp.getContactstab());
 	    hp.getContactstab().click();
 	    
-	    //Thread.sleep(Duration.ofSeconds(10));
-	    
 	    CreateContactPage cp= new CreateContactPage(driver);
-	    wUtil.waitForElementToBeClickable(driver, cp.getCreateContactIcon());
 	    wUtil.waitForElementToBeVisible(driver, cp.getCreateContactIcon());
+	    wUtil.waitForElementToBeClickable(driver, cp.getCreateContactIcon());
 	    cp.getCreateContactIcon().click();
 	    
 	    NewContactPage np= new NewContactPage(driver);
+	    wUtil.waitForElementToBeVisible(driver, np.getLastName());
+	    wUtil.waitForElementToBeClickable(driver, np.getLastName());
 	    np.getLastName().sendKeys(orgName);
 	    np.getSaveBtn().click();
 	    

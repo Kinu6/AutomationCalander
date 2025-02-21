@@ -1,7 +1,6 @@
 package sriMataji.genericUtilities;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -11,7 +10,7 @@ import java.util.Properties;
 public class PropertyFileUtility {
 
 	
-	public String readDataFromPropertyFile(String key) throws FileNotFoundException {
+	public String readDataFromPropertyFile(String key) throws IOException {
 		FileInputStream fisP=new FileInputStream(IConstantUtility.propertyFilePath);
 		Properties pObj= new Properties();
 		try {
@@ -21,6 +20,7 @@ public class PropertyFileUtility {
 			e.printStackTrace();
 		}
 		String value= pObj.getProperty(key);
+	
 		return value;
 		
 		/**

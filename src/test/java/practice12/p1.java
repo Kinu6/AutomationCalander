@@ -1,7 +1,7 @@
 package practice12;
 
 import java.awt.Desktop.Action;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -15,7 +15,7 @@ import sriMataji.genericUtilities.PropertyFileUtility;
 
 public class p1{
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 		
 		String key="webdriver.gecko.driver";
 		String value="C:\\Users\\KESHRI\\Downloads\\Compressed\\geckodriver-v0.32.1-win64\\geckodriver.exe";

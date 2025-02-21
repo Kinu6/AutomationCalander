@@ -17,9 +17,9 @@ public class LoginPage {
 	 * Encapsulation means only showing important things and important things i.e working is hidden. So that no one mess with this
 	 */
 	
-	@FindBy(name=("user_name")) private WebElement username_edt;
-	@FindBy(name=("user_password")) private WebElement password_edt;
-    @FindBy(id= ("submitButton")) private WebElement button;
+	@FindBy(css = ("input[type='text']")) private WebElement username_edt;
+	@FindBy(css=("input[type='password'],[name='user_password']")) private WebElement password_edt;
+    @FindBy(css= ("input#submitButton")) private WebElement button;
     
     //Create a constructor
 	public LoginPage(WebDriver driver) {

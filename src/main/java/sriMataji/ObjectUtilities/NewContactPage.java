@@ -18,7 +18,7 @@ public class NewContactPage extends BaseClass{
 	private WebElement AddOrgNameIcon;
 	@FindBy(name="leadsource") private WebElement LeadSourceDD;
 	@FindBy(xpath = "//input[@title='Save [Alt+S]']") private WebElement SaveBtn;
-	@FindBy(id="search_txt") private WebElement SearchTxt;
+	@FindBy(xpath="//input[@id=search_txt and @class='txtbox']"/*, name="search"*/) private WebElement SearchTxt;
 	@FindBy(name="search") private WebElement SearchBtn;
 	
 	//Constructor
@@ -59,16 +59,17 @@ public class NewContactPage extends BaseClass{
 		SaveBtn.click();
 	}
 	
-	public void addOrgName(String LASTNAME, String ORGNAME ) {
+	public void addOrgName(String LASTNAME, String ORGNAME ) throws InterruptedException{
 		
 		LastName.sendKeys(LASTNAME);
 		AddOrgNameIcon.click();
-		wUtil.switchToWindow(driver, "Accounts");
+		wUtil.switchToWindow(this.driver, "Accounts");
 		SearchTxt.sendKeys(ORGNAME);
 		SearchBtn.click();
 		driver.findElement(By.xpath("//a[.='"+ORGNAME+"']")).click();
-		wUtil.switchToWindow(driver, "Contacts");
-				SaveBtn.click();
+		wUtil.switchToWindow(this.driver, "Contacts");
+		SaveBtn.click();
+		
 		
 	}
 	

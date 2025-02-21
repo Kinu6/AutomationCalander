@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import sriMataji.genericUtilities.WebDriverUtility;
 
 public class NewOrganizationPage extends WebDriverUtility{
-    @FindBy(name ="accountname") private WebElement OrgNameEdt;
+    @FindBy(css ="img[alt='Create Organization...'][title='Create Organization...']") private WebElement OrgNameEdt;
     @FindBy (name="industry") private WebElement IndustryDD;
     @FindBy(name="accounttype") private WebElement TypeDD;
     @FindBy(xpath="//input[@title='Save [Alt+S]']") private WebElement SaveBtn;

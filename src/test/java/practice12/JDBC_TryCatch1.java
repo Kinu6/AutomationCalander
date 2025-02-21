@@ -23,7 +23,7 @@ public class JDBC_TryCatch1 {
 		Statement state= con.createStatement();
 		
 		//Step 4: execute a query
-		String query = "insert into my_table values(4,'Hari',30);"; 
+		String query = "insert into my_table values(10,'Hari1',35);"; 
 		int result= state.executeUpdate(query);
 		if (result>=1)
 		{
