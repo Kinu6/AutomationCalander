@@ -7,11 +7,9 @@
         <methods>
           <include name="methodTC_01"/>
           <include name="methodAfterSuite"/>
-          <include name="methodBeforeClass"/>
-          <include name="methodBeforeMethod"/>
-          <include name="methodAfterMethod"/>
-          <include name="methodBeforeSuite"/>
-          <include name="methodAfterClass"/>
+          <include name="beforeMethod"/>
+          <include name="beforeSuite"/>
+          <include name="afterMethod"/>
         </methods>
       </class> <!-- createLeads.TC_01 -->
     </classes>

@@ -9,8 +9,10 @@ public class CreateContactPage {
     //Create a POM class dear
 	// Create Webelement using FindBy
 	@FindBy(css = "img[src='themes/softed/images/btnL3Add.gif'],[title='Create Contact...']") private WebElement CreateContactIcon;
+	private WebDriver driver;
 	//Constructor
 	public CreateContactPage(WebDriver driver) {
+		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
 	//getters

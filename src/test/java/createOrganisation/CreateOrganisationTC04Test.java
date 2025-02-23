@@ -14,26 +14,28 @@ import sriMataji.genericUtilities.BaseClass;
 
 public class CreateOrganisationTC04Test extends BaseClass{
 	
-	@Test()
+	@Test(groups = {"smokeSuite"})
 	public void tc04Test() throws InterruptedException, EncryptedDocumentException, IOException {
 		
 		String orgName= eUtil.readDataFromExcelFile("organizations", 01, 02)+jUtil.getRandomNumber();
 		
-		HomePage hp= new  HomePage(driver);
+		HomePage hp= new  HomePage(BaseClass.getDriver());
 		hp.getOrgTab().click();
-		
-		Thread.sleep(Duration.ofSeconds(5));
 	
-		CreateOrganisationPage cop= new CreateOrganisationPage(driver);
+		CreateOrganisationPage cop= new CreateOrganisationPage(BaseClass.getDriver());
+		wUtil.waitForElementToBeVisible(getDriver(), cop.getCreateOrgIcon());
+		wUtil.waitForElementToBeClickable(getDriver(), cop.getCreateOrgIcon());
 		cop.getCreateOrgIcon().click();
 		
-		NewOrganizationPage  ncp= new NewOrganizationPage(driver);
+		NewOrganizationPage  ncp= new NewOrganizationPage(BaseClass.getDriver());
+		wUtil.waitForElementToBeClickable(getDriver(),ncp.getOrgNameEdt());
 		ncp.getOrgNameEdt().sendKeys(orgName);
 		ncp.getSaveBtn().click();
 		
-		OrganisationInformationPage oip= new  OrganisationInformationPage(driver);
-		wUtil.waitForElementToBeVisible(driver, oip.getHeaderTxt());
+		OrganisationInformationPage oip= new  OrganisationInformationPage(BaseClass.getDriver());
+		wUtil.waitForElementToBeVisible(BaseClass.getDriver(), oip.getHeaderTxt());
 		Assert.assertEquals(oip.getHeaderTxt().getText().contains(orgName),true,"yoyo");
+		
 		
 		/*
 		 * 1. ElementNotInteractableException

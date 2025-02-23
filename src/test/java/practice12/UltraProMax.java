@@ -19,21 +19,21 @@ public void getInto() throws EncryptedDocumentException, IOException, Interrupte
 	 ExcelFileUtility eUtil= new ExcelFileUtility();
 		String orgName= eUtil.readDataFromExcelFile("contacts", 01, 02);
 			
-		HomePage hp= new HomePage(driver);
+		HomePage hp= new HomePage(BaseClass.getDriver());
 	    hp.getContactstab().click();
 	   // Thread.sleep(Duration.ofSeconds(10));
 	    
-	    CreateContactPage cp= new CreateContactPage(driver);
-	    wUtil.waitForElementToBeClickable(driver, cp.getCreateContactIcon());
-	    wUtil.waitForElementToBeVisible(driver, cp.getCreateContactIcon());
+	    CreateContactPage cp= new CreateContactPage(BaseClass.getDriver());
+	    wUtil.waitForElementToBeClickable(BaseClass.getDriver(), cp.getCreateContactIcon());
+	    wUtil.waitForElementToBeVisible(BaseClass.getDriver(), cp.getCreateContactIcon());
 	    cp.getCreateContactIcon().click();
 	    
-	    NewContactPage np= new NewContactPage(driver);
+	    NewContactPage np= new NewContactPage(BaseClass.getDriver());
 	    np.getLastName().sendKeys(orgName);
 	    np.getSaveBtn().click();
 	    
 	    //Validations
-	    ContactInformationPage cip= new ContactInformationPage(driver);
+	    ContactInformationPage cip= new ContactInformationPage(BaseClass.getDriver());
 	    Assert.assertEquals(cip.getHeaderTxt().getText().contains(orgName), true);     
 }
 }

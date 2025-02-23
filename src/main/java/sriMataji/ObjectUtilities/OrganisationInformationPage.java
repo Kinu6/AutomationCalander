@@ -8,8 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 public class OrganisationInformationPage {
       
 	@FindBy(xpath ="//span[@class='dvHeaderText']") private WebElement HeaderTxt;
+	private WebDriver driver;
 	
 	public  OrganisationInformationPage(WebDriver driver) {
+		this.driver=driver;
 		PageFactory.initElements(driver,this); }
 	
 	public WebElement getHeaderTxt() {

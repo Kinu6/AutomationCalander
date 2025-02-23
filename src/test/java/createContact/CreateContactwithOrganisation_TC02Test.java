@@ -25,43 +25,41 @@ public class CreateContactwithOrganisation_TC02Test extends BaseClass {
 		String orgName=eUtil.readDataFromExcelFile("contacts", 4, 2)+jUtil.getRandomNumber();
 		System.out.println(lastName+orgName);
 	
-	sriMataji.ObjectUtilities.HomePage hp= new sriMataji.ObjectUtilities.HomePage(driver);
+	sriMataji.ObjectUtilities.HomePage hp= new sriMataji.ObjectUtilities.HomePage(BaseClass.getDriver());
 	//Now First Create an Organisations with Name taken during Compilation i.e from Excel Sheet with variable orgName
 		{
 			hp.getOrgTab().click();	
 			
-			sriMataji.ObjectUtilities.CreateOrganisationPage cop= new sriMataji.ObjectUtilities.CreateOrganisationPage(driver);
-		    wUtil.waitForElementToBeClickable(driver, cop.getCreateOrgIcon());
+			sriMataji.ObjectUtilities.CreateOrganisationPage cop= new sriMataji.ObjectUtilities.CreateOrganisationPage(BaseClass.getDriver());
+		    wUtil.waitForElementToBeClickable(BaseClass.getDriver(), cop.getCreateOrgIcon());
 			cop.getCreateOrgIcon().click();
 			
-			sriMataji.ObjectUtilities.NewOrganizationPage  nop= new sriMataji.ObjectUtilities.NewOrganizationPage(driver);
+			sriMataji.ObjectUtilities.NewOrganizationPage  nop= new sriMataji.ObjectUtilities.NewOrganizationPage(BaseClass.getDriver());
 			WebElement e= nop.getOrgNameEdt(); // is not reachable by keyboard
 			
-			//JavascriptExecutor jsR= (JavascriptExecutor) driver;
+			//JavascriptExecutor jsR= (JavascriptExecutor) BaseClass.getDriver();
 			//jsR.executeScript("arguments[0].value='"+ orgName +"';", e);
 			
 			e.click();   //Otherway
 			e.sendKeys(orgName);	
 			nop.getSaveBtn().click();
 			
-			sriMataji.ObjectUtilities.OrganisationInformationPage oip= new  sriMataji.ObjectUtilities.OrganisationInformationPage(driver);
-			wUtil.waitForElementToBeVisible(driver, oip.getHeaderTxt());
+			sriMataji.ObjectUtilities.OrganisationInformationPage oip= new  sriMataji.ObjectUtilities.OrganisationInformationPage(BaseClass.getDriver());
+			wUtil.waitForElementToBeVisible(BaseClass.getDriver(), oip.getHeaderTxt());
 			
 			//Assert.assertEquals(oip.getHeaderTxt().getText().contains(orgName),true,"OrgName Created");
 		}
 		
 	hp.getContactstab().click();
 	
-	CreateContactPage ccp= new CreateContactPage(driver);
+	CreateContactPage ccp= new CreateContactPage(BaseClass.getDriver());
 	ccp.getCreateContactIcon().click();
 	
-	NewContactPage ncp= new NewContactPage(driver);
+	NewContactPage ncp= new NewContactPage(BaseClass.getDriver());
 	ncp.getLastName().sendKeys(lastName);
-	
 	ncp.addOrgName(lastName, orgName);
 	
-	ContactInformationPage cip=new ContactInformationPage(driver);
-	
-	Assert.assertEquals(cip.getHeaderTxt().getText().contains(lastName), true, "Last Name is THere");
+	ContactInformationPage cip=new ContactInformationPage(BaseClass.getDriver());
+	Assert.assertTrue(cip.getHeaderTxt().getText().contains(lastName));
 	}
 }

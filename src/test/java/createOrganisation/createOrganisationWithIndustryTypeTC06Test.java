@@ -23,19 +23,19 @@ public class createOrganisationWithIndustryTypeTC06Test extends BaseClass {
         String indDD= eUtil.readDataFromExcelFile("organizations", 7, 3);
         String typeDD= eUtil.readDataFromExcelFile("organizations", 7, 4);
 		
-        HomePage hp= new  HomePage(driver);
+        HomePage hp= new  HomePage(BaseClass.getDriver());
         hp.getOrgTab().click();
 		
-		CreateOrganisationPage cop= new CreateOrganisationPage(driver);
+		CreateOrganisationPage cop= new CreateOrganisationPage(BaseClass.getDriver());
 	    Thread.sleep(Duration.ofSeconds(10));
 		cop.getCreateOrgIcon().click();
 		
-		NewOrganizationPage  ncp= new NewOrganizationPage(driver);
-		ncp.createOrgWithIndustry_type(orgName, indDD, typeDD);
+		NewOrganizationPage  ncp= new NewOrganizationPage(BaseClass.getDriver());
+		ncp.createOrgWithIndustry_type(BaseClass.getDriver(), orgName, indDD, typeDD);
 		ncp.getSaveBtn().click();
 		
-		OrganisationInformationPage oip= new  OrganisationInformationPage(driver);
-		wUtil.waitForElementToBeVisible(driver, oip.getHeaderTxt());
+		OrganisationInformationPage oip= new  OrganisationInformationPage(BaseClass.getDriver());
+		wUtil.waitForElementToBeVisible(BaseClass.getDriver(), oip.getHeaderTxt());
 		System.out.println(hashCode());
 		
 		Assert.assertEquals(oip.getHeaderTxt().getText().contains(orgName), true);

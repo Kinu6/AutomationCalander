@@ -21,9 +21,11 @@ public class NewContactPage extends BaseClass{
 	@FindBy(xpath="//input[@id=search_txt and @class='txtbox']"/*, name="search"*/) private WebElement SearchTxt;
 	@FindBy(name="search") private WebElement SearchBtn;
 	
+	private WebDriver driver;
 	//Constructor
 	public NewContactPage(WebDriver driver) {
-		PageFactory.initElements(driver,this);
+	    this.driver=driver;
+		PageFactory.initElements(BaseClass.getDriver(),this);
 	}
 	
 	//getters
@@ -63,11 +65,11 @@ public class NewContactPage extends BaseClass{
 		
 		LastName.sendKeys(LASTNAME);
 		AddOrgNameIcon.click();
-		wUtil.switchToWindow(this.driver, "Accounts");
+		wUtil.switchToWindow(BaseClass.getDriver(), "Accounts");
 		SearchTxt.sendKeys(ORGNAME);
 		SearchBtn.click();
-		driver.findElement(By.xpath("//a[.='"+ORGNAME+"']")).click();
-		wUtil.switchToWindow(this.driver, "Contacts");
+		BaseClass.getDriver().findElement(By.xpath("//a[.='"+ORGNAME+"']")).click();
+		wUtil.switchToWindow(BaseClass.getDriver(), "Contacts");
 		SaveBtn.click();
 		
 		

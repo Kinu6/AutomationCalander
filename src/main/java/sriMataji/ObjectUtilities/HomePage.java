@@ -17,12 +17,14 @@ public class HomePage extends WebDriverUtility{
 	@FindBy(linkText = "Organizations") private WebElement OrgTab;
 	@FindBy(linkText = "Contacts") private WebElement ContactsTab;
 	@FindBy(xpath = "//img[@src='themes/softed/images/user.PNG' and @style='padding: 0px;padding-left:5px']") private WebElement adminIcon;
-	@FindBy(css = "a.drop_down_usersettings[href='index.php?module=Users&action=Logout']") private WebElement SignOutIcon;
+	@FindBy(xpath="//td[contains(@style,'padding-left:0px')]//a[text()='Sign Out']") private WebElement SignOutIcon;
 	@FindBy(linkText = "Leads") private WebElement leadsTab;
 	@FindBy(linkText = "Opportunities") private WebElement oppurtunities;
+	private WebDriver driver=null;
 	
 	// Create a constructor
 	public HomePage(WebDriver driver) {
+		this.driver =driver;
 		PageFactory.initElements(driver, this);
 	}
 	// Create Getters 
@@ -46,6 +48,9 @@ public class HomePage extends WebDriverUtility{
 		return oppurtunities;
 	}
 	public void logOut(WebDriver driver) {
+		
+		//new WebDriverUtility().waitForElementToBeVisible(driver,SignOutIcon);
+		
 		mouseHoverAction(driver, adminIcon);
 		/*
 		 * //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", SignOutIcon);
@@ -66,7 +71,9 @@ public class HomePage extends WebDriverUtility{
 		
 		js.executeScript("arguments[0].click();", SignOutIcon); //For handling org.openqa.selenium.ElementClickInterceptedException
 		*/
-		SignOutIcon.click();
+		//SignOutIcon.click();
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", SignOutIcon);
+
 	}
 	
 	

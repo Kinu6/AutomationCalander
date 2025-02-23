@@ -19,19 +19,19 @@ public class CreateContactWithLeadSource_TC03Test extends BaseClass {
 		String lastName=eUtil.readDataFromExcelFile("contacts", 7, 2);
 		String leadName=eUtil.readDataFromExcelFile("contacts", 7, 3);
 	
-	sriMataji.ObjectUtilities.HomePage hp= new sriMataji.ObjectUtilities.HomePage(driver);
+	sriMataji.ObjectUtilities.HomePage hp= new sriMataji.ObjectUtilities.HomePage(BaseClass.getDriver());
 	hp.getContactstab().click();
 	
 	//Thread.sleep(Duration.ofSeconds(10));
-	wUtil.implicitWaits(driver);
+	wUtil.implicitWaits(BaseClass.getDriver());
 	
-	CreateContactPage ccp= new CreateContactPage(driver);
+	CreateContactPage ccp= new CreateContactPage(BaseClass.getDriver());
 	ccp.getCreateContactIcon().click();
 	
-	NewContactPage ncp= new NewContactPage(driver);
+	NewContactPage ncp= new NewContactPage(BaseClass.getDriver());
 	ncp.addLastnamewithLeadSource(lastName, leadName);
 	
-	ContactInformationPage cip=new ContactInformationPage(driver);
+	ContactInformationPage cip=new ContactInformationPage(BaseClass.getDriver());
 	Assert.assertEquals(cip.getHeaderTxt().getText().contains(lastName),true) ;
 	
 

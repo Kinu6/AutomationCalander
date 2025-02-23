@@ -15,13 +15,15 @@ import sriMataji.genericUtilities.BaseClass;
 
 public class NewLeadsPage extends BaseClass{
 
-	@FindBy(css= "input[name='lastname]") private WebElement lastname;
+	@FindBy(css= "input[name='lastname']") private WebElement lastname;
 	@FindBy(css= "input[name='company']") private WebElement company;
-	@FindBy(css ="input[title='Save [Alt+S]'") private WebElement saveBtn;
+	@FindBy(css ="input[title='Save [Alt+S]']") private WebElement saveBtn;
 	@FindBy(css="select[name='leadsource']") private WebElement leadSourceDD;
 	
+	WebDriver driver;
     public NewLeadsPage(WebDriver driver) {
-		PageFactory.initElements(driver, this);
+    	this.driver=driver;
+		PageFactory.initElements(BaseClass.getDriver(), this);
 	}
 
 	public WebElement getLastname() {
@@ -42,15 +44,13 @@ public class NewLeadsPage extends BaseClass{
 	
 	public void addNewLeadsWithBasicInfo(WebDriver driver) {
 		try {
+			
 			String lastName= eUtil.readDataFromExcelFile("leads", 1, 1);
 			String company= eUtil.readDataFromExcelFile("leads", 1, 2);
 			String leadSource=eUtil.readDataFromExcelFile("leads", 1, 3);
-			
 			getLastname().sendKeys(lastName);
 			getCompany().sendKeys(company);
-			
 			wUtil.handleDropdown(leadSource, leadSourceDD);
-			
 			getSaveBtn().click();
 			
 		} catch (EncryptedDocumentException | IOException e) {

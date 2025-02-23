@@ -39,7 +39,7 @@ public class ListenersImplementaion implements ITestListener{
 	    
 		WebDriverUtility wUtil= new WebDriverUtility();
 	    try {
-			String path= wUtil.takesScreenShot(BaseClass.sDriver, scrrenShotName);
+			String path= wUtil.takesScreenShot(BaseClass.getDriver(), scrrenShotName);
 		    test.addScreenCaptureFromPath(path);
 	    } catch (IOException e) {
 			// TODO Auto-generated catch block

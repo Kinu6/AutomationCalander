@@ -3,7 +3,8 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="practice12.CreateOrgTest"/>
+      <class name="createLeads.TC_01"/>
+      <methods> inc<include name=""></include></methods>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

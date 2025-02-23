@@ -20,9 +20,11 @@ public class LoginPage {
 	@FindBy(css = ("input[type='text']")) private WebElement username_edt;
 	@FindBy(css=("input[type='password'],[name='user_password']")) private WebElement password_edt;
     @FindBy(css= ("input#submitButton")) private WebElement button;
+	private WebDriver driver;
     
     //Create a constructor
 	public LoginPage(WebDriver driver) {
+		this.driver=driver;
 		PageFactory.initElements(driver, this);	
 	}
 	

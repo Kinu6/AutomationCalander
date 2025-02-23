@@ -4,10 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Set;
+import java.util.concurrent.TimeoutException;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -110,11 +114,30 @@ public class WebDriverUtility {
 	    if (driver == null || element == null) {
 	        throw new IllegalArgumentException("WebDriver or WebElement is null");
 	    }
-	    JavascriptExecutor js = (JavascriptExecutor) driver;
-	    js.executeScript("arguments[0].scrollIntoView(true);", element);
-	    
-	    Actions act = new Actions(driver);
-	    act.moveToElement(element).release().perform();
+
+	    try { 
+	        // Wait until the element is visible and interactable
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	       
+	        /* // Scroll the element into view (useful if not in viewport)
+	        JavascriptExecutor js = (JavascriptExecutor) driver;
+	        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);*/
+
+	        // Perform mouse hover action
+	        Actions act = new Actions(driver);
+	        act.moveToElement(element).pause(Duration.ofSeconds(1)).perform(); // Wait before next action
+	        act.moveToElement(element).build().perform(); // for opertsionas like hover+click combining mutilple actions at once
+	       
+	        
+	        System.out.println("Mouse hover action performed successfully on: " + element.getText());
+
+	    }  catch (StaleElementReferenceException e) {
+	        System.err.println("Element is no longer attached to the DOM. Re-locating...");
+	        element = driver.findElement(By.xpath("//your_xpath")); // Re-find the element
+	        new Actions(driver).moveToElement(element).perform();
+	    } catch (Exception e) {
+	        System.err.println("Exception during mouse hover action: " + e.getMessage());
+	    }
 	}
 
 	/**

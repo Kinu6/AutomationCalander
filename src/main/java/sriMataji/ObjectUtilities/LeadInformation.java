@@ -5,10 +5,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import sriMataji.genericUtilities.BaseClass;
+
 public class LeadInformation {
-	@FindBy(css= "span=[class='dvHeaderText']") private WebElement leadInfoTxt;
+	@FindBy(xpath="//span[contains(. ,'Lead')]") private WebElement leadInfoTxt;
+	
+	private WebDriver driver;
     public  LeadInformation(WebDriver driver) {
-		PageFactory.initElements(driver,this);
+    	this.driver=driver;
+		PageFactory.initElements(BaseClass.getDriver(),this);
 	}
     
 	public WebElement getLeadInfoTxt() {

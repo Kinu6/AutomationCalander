@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class TestNgPractice1 {
 	
-    @Test(priority = -1,invocationCount = 2)
+    @Test(priority = -1,invocationCount = 2,testName = "A")
 	public void createUser() {
 		System.out.println("Created");
 	}
@@ -12,7 +12,7 @@ public class TestNgPractice1 {
 	public void updateUser() {
 		System.out.println("Updated");
 	}
-    @Test(enabled = false)
+    @Test(enabled = true)
 	public void deleteUser() {
 		System.out.println("Deleted");
 	}

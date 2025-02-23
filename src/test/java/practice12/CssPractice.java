@@ -15,16 +15,16 @@ public class CssPractice extends BaseClass{
 	/*static void main(String[] args) {*/
 	public void f() throws Throwable {
 		
-		HomePage hp=new HomePage(driver);
+		HomePage hp=new HomePage(BaseClass.getDriver());
 		hp.getContactstab().click();
 		
 		Thread.sleep(20);
-		CreateContactPage cp= new  CreateContactPage(driver);
+		CreateContactPage cp= new  CreateContactPage(BaseClass.getDriver());
 		cp.getCreateContactIcon().click();
 		
 		//NewContactPage np=new NewContactPage(driver);
 		
-		driver.findElement(By.cssSelector("#title")).sendKeys("INDIA");;
+		BaseClass.getDriver().findElement(By.cssSelector("#title")).sendKeys("INDIA");;
 		
 		//driver.findElement(By.cssSelector(font-family= 'Arial, Helvetica, sans-serif'));
 		

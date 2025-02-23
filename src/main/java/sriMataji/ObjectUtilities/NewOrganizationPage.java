@@ -1,21 +1,24 @@
 package sriMataji.ObjectUtilities;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import sriMataji.genericUtilities.BaseClass;
 
-import sriMataji.genericUtilities.WebDriverUtility;
-
-public class NewOrganizationPage extends WebDriverUtility{
-    @FindBy(css ="img[alt='Create Organization...'][title='Create Organization...']") private WebElement OrgNameEdt;
+public class NewOrganizationPage extends BaseClass{
+    @FindBy(name="accountname") private WebElement OrgNameEdt;
     @FindBy (name="industry") private WebElement IndustryDD;
     @FindBy(name="accounttype") private WebElement TypeDD;
-    @FindBy(xpath="//input[@title='Save [Alt+S]']") private WebElement SaveBtn;
+    @FindBy(xpath="(//div[@align='center']//input[contains(@class,'save')])[1]") private WebElement SaveBtn;
     
-    
-    public NewOrganizationPage(WebDriver driver) {
-    	PageFactory.initElements(driver, this);
+    private  WebDriver driver;
+   
+   //  public NewOrganizationPage(WebDriver BaseClass.getDriver()) {// This is an identifier Now
+    public NewOrganizationPage(WebDriver driver) {	
+        this.driver=BaseClass.getDriver();
+    	PageFactory.initElements(BaseClass.getDriver(), this);
     }
     
 	public WebElement getOrgNameEdt() {
@@ -38,9 +41,16 @@ public class NewOrganizationPage extends WebDriverUtility{
 	 * @param INDUSTRY
 	 * @param ORGNAME
 	 */
-	public void createOrgWithIndustry(String VALUE, String ORGNAME) {
+	public void createOrgWithIndustry(WebDriver driver, String VALUE, String ORGNAME) {
 		OrgNameEdt.sendKeys(ORGNAME);
-		handleDropdown(IndustryDD, VALUE);
+		wUtil.handleDropdown(IndustryDD, VALUE);
+		
+		/*JavascriptExecutor js = (JavascriptExecutor) driver;
+	    js.executeScript("arguments[0].scrollIntoView(true);", SaveBtn);
+	    
+	    wUtil.waitForElementToBeVisible(driver, SaveBtn);
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", SaveBtn);*/
+
 		SaveBtn.click();
 	}
 	/**
@@ -49,10 +59,13 @@ public class NewOrganizationPage extends WebDriverUtility{
 	 * @param INDUSTRY
 	 * @param Type
 	 */
-	public void createOrgWithIndustry_type(String ORGNAME, String INDUSTRY, String Type) {
+	public void createOrgWithIndustry_type(WebDriver
+			 driver, String ORGNAME, String INDUSTRY, String Type) {
 		OrgNameEdt.sendKeys(ORGNAME);
-		handleDropdown(INDUSTRY, IndustryDD);
-		handleDropdown(Type, TypeDD);
+		wUtil.handleDropdown(INDUSTRY, IndustryDD);
+		wUtil.handleDropdown(Type, TypeDD);
+		/*JavascriptExecutor js = (JavascriptExecutor) driver;
+	    js.executeScript("arguments[0].scrollIntoView(true);", SaveBtn); */
 		SaveBtn.click();
 	}
 	
