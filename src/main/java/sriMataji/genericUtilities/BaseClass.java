@@ -118,9 +118,9 @@ public class BaseClass {
 			WebDriverManager.firefoxdriver().setup();
 			// driver = new FirefoxDriver();
 			//setDriver(new FirefoxDriver());
-			FirefoxOptions options = new FirefoxOptions();
-			options.setCapability("moz:webdriverClick", true);
-			setDriver(new FirefoxDriver(options));
+//			FirefoxOptions options = new FirefoxOptions();
+//			options.setCapability("moz:webdriverClick", true);
+			setDriver(new FirefoxDriver());
 		} 
 		else if(BROWSER.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
