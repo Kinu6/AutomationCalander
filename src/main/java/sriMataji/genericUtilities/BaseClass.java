@@ -124,6 +124,7 @@ public class BaseClass {
 		else if(BROWSER.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
 			EdgeOptions options= new EdgeOptions();
+			 options.addArguments("--headless", "--disable-gpu");
 			setDriver(new EdgeDriver(options));
 			
 			// setDriver(new ChromeDriver()); should accept a WebDriver instance, not
