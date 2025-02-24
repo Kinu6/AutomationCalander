@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -122,7 +123,9 @@ public class BaseClass {
 		} 
 		else if(BROWSER.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
-			setDriver(new EdgeDriver());
+			EdgeOptions options= new EdgeOptions();
+			setDriver(new EdgeDriver(options));
+			
 			// setDriver(new ChromeDriver()); should accept a WebDriver instance, not
 			// ThreadLocal<WebDriver>.
 		}
