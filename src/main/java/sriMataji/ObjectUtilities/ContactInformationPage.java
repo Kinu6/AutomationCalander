@@ -10,7 +10,7 @@ import sriMataji.genericUtilities.BaseClass;
 public class ContactInformationPage {
     // Create POM Class
 	// Create FindBy
-	 @FindBy(xpath = "//span[@class='dvHeaderText']") private WebElement HeaderTxt;
+	 @FindBy(xpath="//span[contains(. ,'Contact ')]") private WebElement HeaderTxt;
 	private WebDriver driver;
 	// Create Constructor
 	 public ContactInformationPage(WebDriver driver) {

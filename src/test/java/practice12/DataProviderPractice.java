@@ -3,7 +3,7 @@ package practice12;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class DataProviderTest {
+public class DataProviderPractice {
 
 	@Test( dataProvider = "getData")
 	public void addToCart(String phoneName, int price, String colour, boolean isAvaliable) {

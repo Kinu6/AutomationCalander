@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -103,7 +104,7 @@ public class BaseClass {
 	public void beforeMethod(/* String BROWSER */) throws Throwable {
 
 		String URL = pUtil.readDataFromPropertyFile("url");
-		String BROWSER = pUtil.readDataFromPropertyFile("browser");
+		String BROWSER = System.getProperty("browser"); ////pUtil.readDataFromPropertyFile("browser");
 
 		System.out.println(BROWSER);
 		if (BROWSER.equalsIgnoreCase("chrome")) {
@@ -114,10 +115,18 @@ public class BaseClass {
 		} else if (BROWSER.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			// driver = new FirefoxDriver();
-			setDriver(new FirefoxDriver());
+			//setDriver(new FirefoxDriver());
 			FirefoxOptions options = new FirefoxOptions();
 			options.setCapability("moz:webdriverClick", true);
-		} else {
+			setDriver(new FirefoxDriver(options));
+		} 
+		else if(BROWSER.equalsIgnoreCase("edge")) {
+			WebDriverManager.edgedriver().setup();
+			setDriver(new EdgeDriver());
+			// setDriver(new ChromeDriver()); should accept a WebDriver instance, not
+			// ThreadLocal<WebDriver>.
+		}
+			else {
 			System.out.println("Invalid Browser");
 		}
 

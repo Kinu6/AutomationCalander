@@ -27,7 +27,6 @@ public class createOrganisationWithIndustryTypeTC06Test extends BaseClass {
         hp.getOrgTab().click();
 		
 		CreateOrganisationPage cop= new CreateOrganisationPage(BaseClass.getDriver());
-	    Thread.sleep(Duration.ofSeconds(10));
 		cop.getCreateOrgIcon().click();
 		
 		NewOrganizationPage  ncp= new NewOrganizationPage(BaseClass.getDriver());

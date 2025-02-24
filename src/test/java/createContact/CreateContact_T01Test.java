@@ -19,11 +19,11 @@ import sriMataji.genericUtilities.ExcelFileUtility;
 
 public class CreateContact_T01Test extends BaseClass {
 
-	@Test(priority = 1, invocationCount = 2, alwaysRun = true)
+	@Test(priority = 1, alwaysRun = true)
 	public void tc01Test() throws EncryptedDocumentException, IOException, InterruptedException{
 		
 	    ExcelFileUtility eUtil= new ExcelFileUtility();
-		String orgName= eUtil.readDataFromExcelFile("contacts", 01, 02);
+		String contName= eUtil.readDataFromExcelFile("contacts", 01, 02);
 		
 		sriMataji.ObjectUtilities.HomePage hp= new sriMataji.ObjectUtilities.HomePage(BaseClass.getDriver());
 		wUtil.waitForElementToBeVisible(BaseClass.getDriver(), hp.getContactstab());
@@ -38,15 +38,16 @@ public class CreateContact_T01Test extends BaseClass {
 	    NewContactPage np= new NewContactPage(BaseClass.getDriver());
 	    wUtil.waitForElementToBeVisible(BaseClass.getDriver(), np.getLastName());
 	    wUtil.waitForElementToBeClickable(BaseClass.getDriver(), np.getLastName());
-	    np.getLastName().sendKeys(orgName);
+	    np.getLastName().sendKeys(contName);
 	    np.getSaveBtn().click();
 	    
 	    //Validations
 	    ContactInformationPage cip= new ContactInformationPage(BaseClass.getDriver());
-	    Assert.assertEquals(cip.getHeaderTxt().getText().contains(orgName), true);
+	   
+	    Assert.assertTrue(cip.getHeaderTxt().getText().contains(contName));
 	}	
 	
-	@Test
+	@Test (priority = 1)
 	public void demo() {
 		System.out.println("Its demo");
 	}

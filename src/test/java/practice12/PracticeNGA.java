@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class PracticeTestNGA {
+public class PracticeNGA {
 
 	@BeforeSuite
 	public void A() {
