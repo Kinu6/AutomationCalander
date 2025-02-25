@@ -21,7 +21,7 @@ import sriMataji.genericUtilities.ExcelFileUtility;
 @Listeners(sriMataji.genericUtilities.ListenersImplementaion.class)
 public class TC_01 extends BaseClass {
 
-	@Test(groups = { "smokeSuite" })
+	@Test(groups = {"smokeSuite" })
 	public void methodTC_01() throws EncryptedDocumentException, IOException {
 
 		ExcelFileUtility eUtil = new ExcelFileUtility();

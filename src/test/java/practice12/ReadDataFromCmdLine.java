@@ -8,8 +8,8 @@ public class ReadDataFromCmdLine {
 	
 	public void methodTC01() {
 		
-		String browser= System.getProperty("browser");
-		System.out.println(browser);
+		String Browser= System.getProperty("browser");
+		System.out.println(Browser);
 		String envD=System.getProperty("UATEnv");
 		System.out.println(envD);
 		String gi=System.getProperty("gi");
