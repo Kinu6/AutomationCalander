@@ -105,8 +105,8 @@ public class BaseClass {
 	public void beforeMethod(/* String BROWSER */) throws Throwable {
 
 		String URL = pUtil.readDataFromPropertyFile("url");
-		//String BROWSER = System.getProperty("browser"); //FOr your cmdLIne Runtime Parameter
-		String BROWSER=pUtil.readDataFromPropertyFile("browser");
+		String BROWSER = System.getProperty("browser"); //FOr your cmdLIne Runtime Parameter
+		//String BROWSER=pUtil.readDataFromPropertyFile("browser");
 
 		System.out.println(BROWSER);
 		if (BROWSER.equalsIgnoreCase("chrome")) {
