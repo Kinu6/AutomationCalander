@@ -2,35 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-02-24T22:53:20 IST" name="Default suite" finished-at="2025-02-24T22:53:55 IST" duration-ms="34148">
+  <suite started-at="2025-03-11T19:17:58 IST" name="Default suite" finished-at="2025-03-11T19:17:58 IST" duration-ms="57">
     <groups>
-      <group name="smokeSuite">
-        <method signature="TC_01.methodTC_01()[pri:0, instance:createLeads.TC_01@40a4337a]" name="methodTC_01" class="createLeads.TC_01"/>
-      </group> <!-- smokeSuite -->
     </groups>
-    <test started-at="2025-02-24T22:53:20 IST" name="Default test" finished-at="2025-02-24T22:53:55 IST" duration-ms="34148">
-      <class name="createLeads.TC_01">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:createLeads.TC_01@40a4337a]" started-at="2025-02-24T22:53:20 IST" name="beforeSuite" finished-at="2025-02-24T22:53:20 IST" duration-ms="9" status="PASS">
+    <test started-at="2025-03-11T19:17:58 IST" name="Default test" finished-at="2025-03-11T19:17:58 IST" duration-ms="57">
+      <class name="practice12.ReadDataFromCmdLine">
+        <test-method signature="methodTC01()[pri:0, instance:practice12.ReadDataFromCmdLine@799f10e1]" started-at="2025-03-11T19:17:58 IST" name="methodTC01" finished-at="2025-03-11T19:17:58 IST" duration-ms="16" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:createLeads.TC_01@40a4337a]" started-at="2025-02-24T22:53:21 IST" name="beforeMethod" finished-at="2025-02-24T22:53:32 IST" duration-ms="11682" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="methodTC_01()[pri:0, instance:createLeads.TC_01@40a4337a]" started-at="2025-02-24T22:53:32 IST" name="methodTC_01" finished-at="2025-02-24T22:53:53 IST" duration-ms="20614" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- methodTC_01 -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:createLeads.TC_01@40a4337a]" started-at="2025-02-24T22:53:53 IST" name="afterMethod" finished-at="2025-02-24T22:53:55 IST" duration-ms="1501" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="methodAfterSuite()[pri:0, instance:createLeads.TC_01@40a4337a]" started-at="2025-02-24T22:53:56 IST" name="methodAfterSuite" finished-at="2025-02-24T22:53:56 IST" duration-ms="16" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- methodAfterSuite -->
-      </class> <!-- createLeads.TC_01 -->
+        </test-method> <!-- methodTC01 -->
+      </class> <!-- practice12.ReadDataFromCmdLine -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

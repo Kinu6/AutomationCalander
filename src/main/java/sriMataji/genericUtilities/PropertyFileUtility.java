@@ -11,8 +11,9 @@ public class PropertyFileUtility {
 
 	
 	public String readDataFromPropertyFile(String key) throws IOException {
-		FileInputStream fisP=new FileInputStream(IConstantUtility.propertyFilePath);
+		
 		Properties pObj= new Properties();
+		FileInputStream fisP=new FileInputStream(IConstantUtility.propertyFilePath);
 		try {
 			pObj.load(fisP);
 		} catch (IOException e) {

@@ -105,7 +105,7 @@ public class BaseClass {
 	public void beforeMethod(/* String BROWSER */) throws Throwable {
 
 		String URL = pUtil.readDataFromPropertyFile("url");
-		String BROWSER = System.getProperty("browser"); //FOr your cmdLIne Runtime Parameter
+		String BROWSER = System.getProperty("browser", "edge"); //FOr your cmdLIne Runtime Parameter
 		//String BROWSER=pUtil.readDataFromPropertyFile("browser");
 
 		System.out.println(BROWSER);
@@ -124,9 +124,9 @@ public class BaseClass {
 		} 
 		else if(BROWSER.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
-			EdgeOptions options= new EdgeOptions();
-			 options.addArguments("--headless", "--disable-gpu");
-			setDriver(new EdgeDriver(options));
+			//EdgeOptions options= new EdgeOptions();
+			 //options.addArguments("--headless", "--disable-gpu");
+			setDriver(new EdgeDriver());
 			
 			// setDriver(new ChromeDriver()); should accept a WebDriver instance, not
 			// ThreadLocal<WebDriver>.
@@ -164,6 +164,7 @@ public class BaseClass {
 		}
 		getDriver().quit();
 		driver.remove();
+		
 		// driver=null;
 		/*
 		 * You're setting driver = null; instead of clearing ThreadLocal<WebDriver>

@@ -2,11 +2,13 @@ package createLeads;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
 
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -39,9 +41,12 @@ public class TC_01 extends BaseClass {
 		np.addNewLeadsWithBasicInfo(BaseClass.getDriver());
 
 		LeadInformation li = new LeadInformation(BaseClass.getDriver());
-
+       // Assert.fail();
 		assertTrue(new LeadInformation(BaseClass.getDriver()).getLeadInfoTxt().getText().contains(lastName), "HI");
 
+		String s= lastName.
+		
+		
 	}
 
 //	@Test()

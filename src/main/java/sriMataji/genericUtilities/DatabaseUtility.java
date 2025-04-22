@@ -18,7 +18,7 @@ public class DatabaseUtility {
 		DriverManager.registerDriver(dRef);
 		
 		//Connect to Database
-		Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/ravishinfo", "root", "TIGER");
+		Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/sms", "root", "TIGER");
 		
 		//Issue create Statement
 		Statement state = con.createStatement();
